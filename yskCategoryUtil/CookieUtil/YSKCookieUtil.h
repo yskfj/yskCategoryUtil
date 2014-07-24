@@ -1,8 +1,3 @@
-//
-//  YSKCookieUtil.h
-//  NSHTTPCookieStorageから該当のクッキーを操作する
-//
-
 #import <Foundation/Foundation.h>
 
 @interface YSKCookieUtil : NSObject

@@ -1,5 +1,9 @@
 //
 //  NSBundle+YSKMainBundle.m
+//  ShopApp
+//
+//  Created by 藤井洋介 on 2014/06/20.
+//  Copyright (c) 2014年 Golf Digest Online Inc. All rights reserved.
 //
 
 #import "NSBundle+YSKMainBundle.h"
@@ -8,6 +12,7 @@
 
 + (id)infoValueFromMainBundleForKey:(NSString*)key
 {
+    if (key == nil) return nil;
     if ([[[self mainBundle] localizedInfoDictionary] objectForKey:key])
         return [[[self mainBundle] localizedInfoDictionary] objectForKey:key];
     return [[[self mainBundle] infoDictionary] objectForKey:key];

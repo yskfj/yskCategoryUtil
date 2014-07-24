@@ -1,6 +1,9 @@
 //
 //  NSURL+YSKQueryString.h
-//  NSURLやNSString型のURLにパラメータを付与する
+//  ShopApp
+//
+//  Created by 藤井洋介 on 2014/06/20.
+//  Copyright (c) 2014年 Golf Digest Online Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

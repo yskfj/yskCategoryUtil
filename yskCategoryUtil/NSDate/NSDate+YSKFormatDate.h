@@ -1,6 +1,9 @@
 //
 //  NSDate+YSKFormatDate.h
-//  NSDate型やNSString型の日付を指定形式でフォーマットする
+//  ShopApp
+//
+//  Created by 藤井洋介 on 2014/06/20.
+//  Copyright (c) 2014年 Golf Digest Online Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -9,6 +12,7 @@
 
 -(NSString*)getDateString;
 -(NSString*)stringWithFormat:(NSString*)format;
+-(NSInteger)getAge;
 
 @end
 

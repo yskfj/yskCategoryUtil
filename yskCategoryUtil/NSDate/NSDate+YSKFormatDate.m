@@ -1,5 +1,9 @@
 //
 //  NSDate+YSKFormatDate.m
+//  ShopApp
+//
+//  Created by 藤井洋介 on 2014/06/20.
+//  Copyright (c) 2014年 Golf Digest Online Inc. All rights reserved.
 //
 
 #import "NSDate+YSKFormatDate.h"
@@ -19,6 +23,16 @@
     formatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"JST"];
     formatter.dateFormat = format;
     return [formatter stringFromDate:self];
+}
+-(NSInteger)getAge
+{
+    NSDate* now = [NSDate date];
+    NSDateComponents* ageComponents = [[NSCalendar currentCalendar]
+                                       components:NSYearCalendarUnit
+                                       fromDate:self
+                                       toDate:now
+                                       options:0];
+    return [ageComponents year];
 }
 
 @end

@@ -91,9 +91,6 @@
 + (UIColor *)gdoColor {
     return [UIColor colorWithHexString:@"#2C81CD"];
 }
-+ (UIColor *)golftecColor {
-    return [UIColor colorWithHexString:@"#008039"];
-}
 + (UIColor *)styleNeoAthleteColor {
     return [UIColor colorWithGDOCornerPathname:@"neo-athlete"];
 }

@@ -33,8 +33,6 @@
 + (UIColor *)tourLpgaColor;
 + (UIColor *)tourPgaColor;
 
-+ (UIColor *)golftecColor;
-
 // FlatUI Color
 + (UIColor *)turquoiseFlatColor;
 + (UIColor *)greenSeaFlatColor;
