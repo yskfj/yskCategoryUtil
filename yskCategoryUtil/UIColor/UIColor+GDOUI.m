@@ -1,9 +1,5 @@
 //
 //  UIColor+GDOUI.m
-//  TourApp
-//
-//  Created by 藤井洋介 on 2014/03/04.
-//  Copyright (c) 2014年 Golf Digest Online Inc. All rights reserved.
 //
 
 #import "UIColor+GDOUI.h"
