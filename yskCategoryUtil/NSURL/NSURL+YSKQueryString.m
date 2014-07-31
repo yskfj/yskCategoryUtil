@@ -49,6 +49,42 @@
     return dict;
 }
 
+- (NSURL*)URLByAppendingQueryStringDictionary:(NSDictionary*)queryDic
+{
+    NSString *scheme      = [self scheme];
+    NSString *host        = [self host];
+    NSString *path        = [self path];
+    NSNumber *port        = [self port];
+    NSString *fragment    = [self fragment];
+    __block NSMutableDictionary *dic = [self parseQueryString].mutableCopy;
+
+    [queryDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
+        [dic setObject:obj forKey:key];
+    }];
+
+    __block NSMutableString *queryString = @"".mutableCopy;
+    [dic enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
+        if ([queryString isEqualToString:@""]) {
+            [queryString appendString:@"?"];
+        } else {
+            [queryString appendString:@"&"];
+        }
+        [queryString appendString:[NSString stringWithFormat:@"%@=%@",key,obj]];
+    }];
+    
+    NSMutableString *url = [NSString stringWithFormat:@"%@://%@",scheme,host].mutableCopy;
+    if (![port isEqualToNumber:@80] && port != nil) {
+        [url appendString:[NSString stringWithFormat:@":%@",port]];
+    }
+    [url appendString:[NSString stringWithFormat:@"%@%@",path,queryString]];
+    if (fragment != nil && ![fragment isEqualToString:@""]) {
+        [url appendString:[NSString stringWithFormat:@"#%@",fragment]];
+    }
+    return [NSURL URLWithString:url];
+}
+
+
+
 @end
 
 @implementation NSString (YSKQueryString)
@@ -81,5 +117,17 @@
     return (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
 kCFAllocatorDefault,(CFStringRef)self,NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8));
 }
+
+- (NSURL*)URLByAppendingQueryStringDictionary:(NSDictionary*)queryDic
+{
+    if (self == nil) return nil;
+    return [[NSURL URLWithString:self] URLByAppendingQueryStringDictionary:queryDic];
+}
+
+- (NSString*)URLStringByAppendingQueryStringDictionary:(NSDictionary*)queryDic
+{
+    return [[self URLByAppendingQueryStringDictionary:queryDic] absoluteString];
+}
+
 
 @end
