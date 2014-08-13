@@ -9,6 +9,7 @@
 - (NSURL*)URLByAppendingQueryString:(NSString *)queryString;
 - (NSURL*)replaceSchemeTo:(NSString*)scheme;
 - (NSString*)urlEncode;
+- (NSString*)urlDecode;
 - (NSDictionary *)parseQueryString;
 - (NSURL*)URLByAppendingQueryStringDictionary:(NSDictionary*)queryDic;
 
@@ -20,6 +21,7 @@
 - (NSURL*)URLByAppendingQueryString:(NSString *)queryString;
 - (NSString*)URLStringByAppendingQueryString:(NSString *)queryString;
 - (NSString*)urlEncode;
+- (NSString*)urlDecode;
 - (NSURL*)URLByAppendingQueryStringDictionary:(NSDictionary*)queryDic;
 - (NSString*)URLStringByAppendingQueryStringDictionary:(NSDictionary*)queryDic;
 

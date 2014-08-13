@@ -34,6 +34,12 @@
     return [str urlEncode];
 }
 
+- (NSString*)urlDecode
+{
+    NSString *str = [self absoluteString];
+    return [str urlEncode];
+}
+
 - (NSDictionary *)parseQueryString
 {
     NSString *query = [self query];
@@ -116,6 +122,12 @@
     if (self == nil) return nil;
     return (NSString*)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
 kCFAllocatorDefault,(CFStringRef)self,NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]",kCFStringEncodingUTF8));
+}
+
+- (NSString*)urlDecode
+{
+    if (self == nil) return nil;
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL,(CFStringRef)self,CFSTR(""),kCFStringEncodingUTF8));
 }
 
 - (NSURL*)URLByAppendingQueryStringDictionary:(NSDictionary*)queryDic
