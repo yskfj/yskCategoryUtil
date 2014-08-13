@@ -86,7 +86,7 @@
     if (fragment != nil && ![fragment isEqualToString:@""]) {
         [url appendString:[NSString stringWithFormat:@"#%@",fragment]];
     }
-    return [NSURL URLWithString:url];
+    return [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 
