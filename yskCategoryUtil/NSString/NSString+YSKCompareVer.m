@@ -33,7 +33,7 @@
 
 + (BOOL) checkVersionFrom:(NSString *)minVer to:(NSString *)maxVer {
     BOOL ret = YES;
-    NSString *ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSString *ver = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
     if (minVer == nil || [minVer isEqualToString:@""]) minVer = @"0";
     if (maxVer == nil || [maxVer isEqualToString:@""]) maxVer = @"100";
     NSComparisonResult minComp = [minVer compare:ver options:NSNumericSearch];
