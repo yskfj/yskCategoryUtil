@@ -231,3 +231,12 @@
 }
 
 @end
+
+
+// UIImage+Tint.h
+
+@interface UIImage (Tint)
+
+- (UIImage *)tintedImageWithColor:(UIColor *)tintColor;
+
+@end
