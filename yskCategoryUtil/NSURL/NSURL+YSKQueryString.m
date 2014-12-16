@@ -62,7 +62,7 @@
     NSString *path        = [self path];
     NSNumber *port        = [self port];
     NSString *fragment    = [self fragment];
-    __block NSMutableDictionary *dic = [self parseQueryString].mutableCopy;
+    __block NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:[self parseQueryString]];
 
     [queryDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
         [dic setObject:obj forKey:key];
