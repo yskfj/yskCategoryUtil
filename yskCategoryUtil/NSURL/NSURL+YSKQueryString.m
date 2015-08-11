@@ -59,11 +59,13 @@
 {
     NSString *scheme      = [self scheme];
     NSString *host        = [self host];
-    NSString *path        = [self path];
+//    NSString *path        = [self path];
+    NSString *path        = (NSString*)CFBridgingRelease(CFURLCopyPath((CFURLRef)self));
     NSNumber *port        = [self port];
     NSString *fragment    = [self fragment];
     __block NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:[self parseQueryString]];
 
+    
     [queryDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *stop) {
         [dic setObject:obj forKey:key];
     }];
