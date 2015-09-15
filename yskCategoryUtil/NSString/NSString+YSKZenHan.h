@@ -34,4 +34,7 @@
 // ローマ字→カタカナ
 - (NSString*) stringLatinToKatakana;
 
+// \U30b4\U30eb\U30d5などを読める文字に
+- (NSString*) stringToReadableStr;
+
 @end

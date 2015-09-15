@@ -56,4 +56,48 @@
                                       reverse:false];
 }
 
+- (NSString*) stringToReadableStr {
+    if (self == nil) return nil;
+    if ([self isEqualToString:@""]) return @"";
+    
+    NSArray *fragments = [self componentsSeparatedByString:@"\\u"];
+    if([fragments count])
+    {
+        NSEnumerator *stringEnumerator = [fragments objectEnumerator];
+        NSMutableString *decodedString =
+        [[stringEnumerator nextObject] mutableCopy];
+        
+        NSString *nextFragment;
+        while(nextFragment = [stringEnumerator nextObject])
+        {
+            if([nextFragment length] >= 4)
+            {
+                unichar decodedCharacter = 0;
+                
+                for(int c = 0; c < 4; c++)
+                {
+                    unichar hexValue = [nextFragment characterAtIndex:c];
+                    
+                    if(hexValue >= 'a')
+                        hexValue = 0xa + (hexValue - 'a');
+                    else
+                        hexValue = hexValue - '0';
+                    
+                    decodedCharacter = (decodedCharacter << 4) + hexValue;
+                }
+                
+                [decodedString appendFormat:@"%C", decodedCharacter];
+                [decodedString appendString:[nextFragment substringFromIndex:4]];
+            }
+            else
+            {
+                // there seems to be a parsing error; maybe just append
+                // next fragment?
+            }
+        }
+        return decodedString;
+    }
+    return self;
+}
+
 @end
