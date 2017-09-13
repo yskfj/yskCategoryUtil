@@ -48,6 +48,7 @@
     NSArray *pairs = [query componentsSeparatedByString:@"&"];
     for (NSString *pair in pairs) {
         NSArray *elements = [pair componentsSeparatedByString:@"="];
+        if( elements.count < 2) continue;
         NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 [dict setObject:val forKey:key];
